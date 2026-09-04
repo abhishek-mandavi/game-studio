@@ -1,8 +1,9 @@
+import { ClerkProvider } from "@clerk/nextjs"
+import { shadcn } from "@clerk/ui/themes"
 import { Fraunces, Geist, Geist_Mono } from "next/font/google"
 
+import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
-import { ClerkProvider } from '@clerk/nextjs'
-import { shadcn } from '@clerk/ui/themes'
 import { Metadata } from "next"
 import "./globals.css"
 
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
   }
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +38,6 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={cn(
-        "dark",
         "antialiased",
         fontMono.variable,
         "font-sans",
@@ -44,11 +45,13 @@ export default function RootLayout({
         fontLogo.variable
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <ClerkProvider appearance={{ theme: shadcn }}>
-          {children}
+          <ThemeProvider>{children}</ThemeProvider>
         </ClerkProvider>
       </body>
     </html>
   )
 }
+
+
