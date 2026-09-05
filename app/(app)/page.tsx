@@ -1,3 +1,7 @@
+import { auth } from "@clerk/nextjs/server"
+import Image from "next/image"
+
+import { NewGameComposer } from "@/components/new-game-composer"
 import {
   Empty,
   EmptyContent,
@@ -6,9 +10,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { UserButton } from "@clerk/nextjs"
-import { auth } from "@clerk/nextjs/server"
-import Image from "next/image"
 
 export default async function Page() {
   await auth.protect({ unauthenticatedUrl: "/sign-in" })
@@ -16,6 +17,7 @@ export default async function Page() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6">
       <Empty className="flex-none">
+
         <EmptyHeader>
 
           <EmptyMedia>
@@ -30,13 +32,15 @@ export default async function Page() {
             Build your own racers, shooters, puzzles and whole worlds using your
             own words. If you can describe it, you can play it.
           </EmptyDescription>
-
+          
         </EmptyHeader>
+
         <EmptyContent className="max-w-2xl gap-6">
-          Game
+          <NewGameComposer />
         </EmptyContent>
+        
       </Empty>
-      <UserButton />
+      
     </div>
   )
 }

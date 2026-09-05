@@ -15,6 +15,7 @@ import {
     SidebarMenuItem,
     SidebarTrigger
 } from "@/components/ui/sidebar"
+
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
 import { CoinsIcon, MessageSquareIcon, SquarePenIcon } from "lucide-react"
 import Image from "next/image"
@@ -121,7 +122,7 @@ export function AppSidebar({
                             <CoinsIcon/>
                             <span>Credits</span>
                         </SidebarMenuButton>
-                        <SidebarMenuBadge>credits</SidebarMenuBadge>
+                        <SidebarMenuBadge>$10.00</SidebarMenuBadge>
                     </SidebarMenuItem>
                 </SidebarMenu>
                 <div className="flex items-center justify-between gap-2 px-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
